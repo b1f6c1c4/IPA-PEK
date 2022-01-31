@@ -18,26 +18,14 @@
 const parse = require('./parse');
 const consonant = require('./consonant');
 const vowel = require('./vowel');
+const tone = require('./tone');
 const display = require('./display');
-
-const toneEncoding = {
-  1: '\\tone{55}',
-  2: '\\tone{35}',
-  3: '\\tone{214}',
-  4: '\\tone{51}',
-  5: '',
-};
 
 module.exports = (ph) => {
   const phs = parse(ph);
   consonant(phs);
   vowel(phs);
-  phs.map((ph) => {
-    if (ph.tone)
-      ph.toneText = toneEncoding[ph.tone];
-    else
-      ph.toneText = '';
-  });
+  tone(phs);
   return phs;
 };
 module.exports.display = display;

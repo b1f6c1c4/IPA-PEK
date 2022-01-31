@@ -18,7 +18,12 @@
 const tipa2unicode = require('tipa2unicode');
 
 function utf8Encode(phs) {
-  return tipa2unicode(latexEncode(phs));
+  const latex = latexEncode(phs);
+  try {
+    return tipa2unicode(latex);
+  } catch (e) {
+    throw new Error(`Error during tipa2unicode ${latex}`, { cause: e });
+  }
 }
 
 function latexEncode(phs) {

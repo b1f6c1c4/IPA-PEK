@@ -16,12 +16,12 @@
  */
 
 module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
-  const special = ph.match(/^(er|m|n|ng)([1-5])$/);
+  const special = ph.match(/^(er|m|n|ng)([1-5])?$/);
   if (special) {
     return {
       onset: null,
       coda: special[1],
-      tone: +special[2],
+      tone: special[2] ? +special[2] : undefined,
     };
   }
   if (ph.match(/^yi/)) {
@@ -35,10 +35,9 @@ module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
   }
   ph = ph.replace(/^w/, 'u');
   ph = ph.replace(/^uei/, 'ui');
-  console.error(ph);
   let [, onset, coda, t] = ph.match(/^([bpmfdtnlgkhjqxrzcs]|[zcs]h)?([aoeiuv]{1,3}n?g?)([1-5])?$/);
   if (['j', 'q', 'x'].includes(onset) && coda && coda[0] === 'u') {
-    code = code.replace(/^u/, 'v');
+    coda = coda.replace(/^u/, 'v');
   }
   const o = {
     onset,
