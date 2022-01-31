@@ -15,9 +15,7 @@
  * along with IPA-PEK.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const vowels = ['AE', 'AY', 'AW', 'AA', 'AH', 'EY', 'EH', 'ER', 'AH', 'IY', 'IH', 'OW', 'OY', 'AO', 'UW', 'UH'];
-
-module.exports = (ph) => {
+module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
   const special = ph.match(/^(er|m|n|ng)([1-5])$/);
   if (special) {
     return {
@@ -29,18 +27,24 @@ module.exports = (ph) => {
   if (ph.match(/^yi/)) {
     ph = ph.replace(/^y/, '');
   }
+  if (ph.match(/^yu/)) {
+    ph = ph.replace(/^yu/, 'v');
+  }
   if (ph.match(/^y/)) {
     ph = ph.replace(/^y/, 'i');
   }
-  if (ph.match(/^w/)) {
-    ph = ph.replace(/^u/, '');
+  ph = ph.replace(/^w/, 'u');
+  ph = ph.replace(/^uei/, 'ui');
+  console.error(ph);
+  let [, onset, coda, t] = ph.match(/^([bpmfdtnlgkhjqxrzcs]|[zcs]h)?([aoeiuv]{1,3}n?g?)([1-5])?$/);
+  if (['j', 'q', 'x'].includes(onset) && coda && coda[0] === 'u') {
+    code = code.replace(/^u/, 'v');
   }
-  const [, onset, coda, t] = ph.match(/^([bpmfdtnlgkhjqxrzcs]|[zcs]h)?([aoeiuv]{1,3}n?g?)([1-5])$/);
   const o = {
     onset,
     coda,
-    tone: +t,
+    tone: t ? +t : undefined,
   };
   return o;
-};
+});
 module.exports.default = module.exports;

@@ -2,6 +2,12 @@
 
 > IPA narrow transcription of Chinese Mandarin words in Beijing accent
 
+## Online Demo Website
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6cc76b39-d72c-4d05-9959-0d57d6b8b6e4/deploy-status)](https://app.netlify.com/sites/ipa-pek/deploys)
+
+You can lookup pinyin on our hassle-free **[Demo Website](https://pek.b1f6c1c4.info/)**!
+
 ## Prerequisites
 
 - Node.js 12.18.3 or 14.x+

@@ -15,31 +15,16 @@
  * along with IPA-PEK.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const onsetEncoding = {
-  b: ['b\u0325', '\\r*b'],
-  p: ['p\u02b0', 'p\\super{h}'],
-  d: ['d\u0325', '\\r*d'],
-  t: ['t\u02b0', 't\\super{h}'],
-  l: ['l\u0320', '\\textsubbar{l}'],
-  g: ['g\u0325', '\\r*g'],
-  k: ['k\u02b0', 'k\\super{h}'],
-  x: ['x\u031e', '\\textlowering{x}'],
-  j: ['d\u0325\u0361\u0325\u0291', '\\t{\\r*d\\r*\\textctz{}}'],
-  q: ['t\u0361\u0255\u02b0', '\\t{t\\textctx\\super{h}}'],
-  x: ['\u0255', '\\textctc{}'],
-  zh: ['d\u0325\u0361\u0325\u0290\u033a', '\\t{\\r*d\\r{\\textinvsubbridge{\\:z}}}'],
-  ch: ['t\u0361\u0282\u033a\u02b0', '\\t{t\\textinvsubbridge{\\:s}}\\super{h}'],
-  sh: ['\u0282\u033a', '\\t{\\textinvsubbridge{\\:s}}'],
-  r: ['\u027b\u033a', '\\t{\\textinvsubbridge{\\:R}}'],
-  z: ['d\u0325\u0361z\u031f\u0291', '\\t{\\r*d\\r*{\\|+z}}'],
-  c: ['t\u0361s\u031f\u02b0', '\\t{t\\|+s\\super{h}}'],
-  s: ['s\u031f', '\\|+s'],
-};
+const tipa2unicode = require('tipa2unicode');
 
 function utf8Encode(phs) {
+  return tipa2unicode(latexEncode(phs));
 }
 
 function latexEncode(phs) {
+  return phs.map((ph) => {
+    return ph.onsetText + ph.codaText + ph.toneText;
+  }).join(' ');
 }
 
 module.exports = {

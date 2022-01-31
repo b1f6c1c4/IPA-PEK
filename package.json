@@ -37,6 +37,7 @@
   "dependencies": {
     "escape-string-regexp": "^4.0.0",
     "htmlencode": "0.0.4",
+    "tipa2unicode": "^0.1.0",
     "yargs": "^16.2.0"
   },
   "devDependencies": {

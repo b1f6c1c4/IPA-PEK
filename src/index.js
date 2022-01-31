@@ -15,15 +15,30 @@
  * along with IPA-PEK.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { htmlEncode } = require('htmlencode');
-const path = require('path');
-const fs = require('fs');
-const core = require('./src');
+const parse = require('./parse');
+const consonant = require('./consonant');
+const vowel = require('./vowel');
+const display = require('./display');
 
-module.exports = {
-  process: core.default,
-  unicode: core.display.utf8Encode,
-  html: (phs) => htmlEncode(core.display.utf8Encode(phs)),
-  latex: core.display.latexEncode,
+const toneEncoding = {
+  1: '\\tone{55}',
+  2: '\\tone{35}',
+  3: '\\tone{214}',
+  4: '\\tone{51}',
+  5: '',
 };
+
+module.exports = (ph) => {
+  const phs = parse(ph);
+  consonant(phs);
+  vowel(phs);
+  phs.map((ph) => {
+    if (ph.tone)
+      ph.toneText = toneEncoding[ph.tone];
+    else
+      ph.toneText = '';
+  });
+  return phs;
+};
+module.exports.display = display;
 module.exports.default = module.exports;

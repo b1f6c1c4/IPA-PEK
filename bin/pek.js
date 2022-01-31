@@ -26,7 +26,7 @@ const { argv } = yargs
   .strict()
   .help('h')
   .alias('h', 'help')
-  .showHelpOnFail(false, 'Hint: You may need this: findbug --help.')
+  .showHelpOnFail(false, 'Hint: You may need this: pek --help.')
   .version()
   .option('unicode', {
     describe: 'Output UTF-8 encoded IPA in unicode.',
@@ -56,16 +56,15 @@ if (!argv._.length) {
 
 const [pinyin] = argv._.splice(0, 1);
 
-const phss = pinyin.split(/\s+/g);
-const irs = phss.map((phs) => pek.process(phs));
+const irs = pek.process(pinyin);
 
 let res;
 if (argv.unicode) {
-  res = irs.map(pek.unicode);
+  res = pek.unicode(irs);
 } else if (argv.html) {
-  res = irs.map(pek.html);
+  res = pek.html(irs);
 } else { // if (argv.latex) {
-  res = irs.map(pek.latex);
+  res = pek.latex(irs);
 }
 
-res.forEach((r) => { console.log(r); });
+console.log(res);
