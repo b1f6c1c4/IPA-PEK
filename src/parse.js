@@ -15,7 +15,7 @@
  * along with IPA-PEK.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
+module.exports = (phst) => phst && phst.trim().split(/\s+/).map((ph) => {
   const special = ph.match(/^(er|m|n|ng)([1-5])?$/);
   if (special) {
     return {

@@ -4,7 +4,7 @@
 
 ## Online Demo Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6cc76b39-d72c-4d05-9959-0d57d6b8b6e4/deploy-status)](https://app.netlify.com/sites/ipa-pek/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/db3c6f43-a6a7-4d2f-b1b4-e5cb3152e9ca/deploy-status)](https://app.netlify.com/sites/ipa-pek/deploys)
 
 You can lookup pinyin on our hassle-free **[Demo Website](https://pek.b1f6c1c4.info/)**!
 
