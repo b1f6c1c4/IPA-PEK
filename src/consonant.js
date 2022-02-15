@@ -39,7 +39,23 @@ const onsetEncoding = {
   s: '\\|+s',
 };
 
+function categorize(phs) {
+  phs.forEach((ph) => {
+    ph.onsetProperties = {
+      bilabial: ['b', 'p', 'm'].includes(ph.onset),
+      labiodental: ['f'].includes(ph.onset),
+      alveolar: ['d', 't', 'n', 'l'].includes(ph.onset),
+      avlor: ['d', 't', 'n', 'l'].includes(ph.onset),
+      velar: ['g', 'k', 'h'].includes(ph.onset),
+      postalveolar: ['j', 'q', 'x'].includes(ph.onset),
+      retroflex: ['zh', 'ch', 'sh', 'r'].includes(ph.onset),
+      advanced: ['z', 'c', 's'].includes(ph.onset),
+    };
+  });
+}
+
 module.exports = (phs) => {
+  categorize(phs);
   phs.forEach((ph) => {
     if (ph.onset)
       ph.onsetText = onsetEncoding[ph.onset];

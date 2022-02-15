@@ -38,10 +38,14 @@ module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
   }
   ph = ph.replace(/^w/, 'u');
   ph = ph.replace(/^uei/, 'ui');
-  let [, onset, coda, t] = ph.match(/^([bpmfdtnlgkhjqxrzcs]|[zcs]h)?([aoeiuv]{1,3}n?g?)([1-5])?$/);
+  let [, onset, coda, t] = ph.match(/^([bpmfdtnlgkhjqxrzcs]|[zcs]h)?([aoeêiuüv]{1,3}n?g?r?)([1-5])?$/);
   if (['j', 'q', 'x'].includes(onset) && coda && coda[0] === 'u') {
     coda = coda.replace(/^u/, 'v');
   }
+  coda = coda.replace('ê', 'ee');
+  coda = coda.replace('ü', 'v');
+  if (coda == 'uen') coda = 'un';
+  if (coda == 'ven') coda = 'vn';
   const o = {
     onset,
     coda,
