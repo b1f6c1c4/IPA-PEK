@@ -30,6 +30,9 @@ module.exports = (phst) => phst && phst.split(/\s+/).map((ph) => {
   if (ph.match(/^yu/)) {
     ph = ph.replace(/^yu/, 'v');
   }
+  if (ph.match(/^you/)) {
+    ph = ph.replace(/^you/, 'iu');
+  }
   if (ph.match(/^y/)) {
     ph = ph.replace(/^y/, 'i');
   }

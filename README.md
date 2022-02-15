@@ -10,9 +10,9 @@ You can lookup pinyin on our hassle-free **[Demo Website](https://pek.b1f6c1c4.i
 
 ## Prerequisites
 
-- Node.js 12.18.3 or 14.x+
-- npm or yarn
-- [Parcel](https://v2.parceljs.org/) (for demo and deployment usage; NOT the DEPRECATED `parcel-bundler`!!!)
+- Node.js 17.x+
+- npm
+- [Parcel](https://parceljs.org/) (for demo and deployment usage)
 
 ## Install CLI
 
@@ -30,21 +30,11 @@ yarn add ipa-pek
 
 ## Local Demo
 
-Additional instruction for Windows users: Remember to amend `scripts.prepare` and `scripts.start` fields in `package.json` prior to running:
-
-> "prepare": "node ./scripts/download.js"  
-> ...  
-> "start": "node ./bin/pek.js"
-
 ```bash
 npm i
-# or:
-yarn install
 ```
 ```bash
 npm run demo
-# or:
-yarn demo
 # A server will be running at http://localhost:1234
 ```
 
