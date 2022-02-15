@@ -69,7 +69,7 @@ console.log(pek.latex(ir));
 
 - How do you get these?
 
-    > Pinyin are translated into allophones using a fixed set of rules.
+    > Pinyin are translated into allophones using a fixed set of [rules](https://phesoca.com/aws/268/).
 
 - I don't understand the complex syntax!
 
